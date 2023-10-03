@@ -58,7 +58,7 @@
         <Method name="obtenerMontoTotal" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="DetallePedidoData" package="" visibility="public" xPosition="697.0" yPosition="550.0">
+    <Class name="DetallePedidoData" package="" visibility="public" xPosition="700.0" yPosition="542.0">
       <Fields>
         <Field name="con" type="Connection" visibility="private"/>
       </Fields>
@@ -115,16 +115,16 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="agrega" source="MesasData" target="PedidosData" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <UseRelation name="" source="MesasData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="DetallePedidoData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="tiene" source="MesasData" target="MeserosData" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="MesasData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation name="" source="MeserosData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation name="" source="PedidosData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="tiene" source="MesasData" target="PedidosData" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <UseRelation name="" source="RestaurantData" target="Conexion" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="tiene" source="PedidosData" target="ProductosData" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="agrega" source="MesasData" target="PedidosData" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <UseRelation name="" source="ProductosData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation name="" source="ReservasData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="" source="DetallePedidoData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tiene" source="PedidosData" target="ProductosData" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="RestaurantData" target="Conexion" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

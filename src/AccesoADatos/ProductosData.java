@@ -1,7 +1,7 @@
 
 package AccesoADatos;
 
-public class ProductoData {
+public class ProductosData {
     
     
     
