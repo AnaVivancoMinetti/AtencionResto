@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="UMLresto">
+  <ClassDiagramComponents>
+    <Class name="MesasData" package="" visibility="public" xPosition="75.0" yPosition="33.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+        <Field name="meseData" type="MeserosData" visibility="private"/>
+        <Field name="reseData" type="ReservasData" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="asignarMesero" returnType="void" visibility="public"/>
+        <Method name="anularReserva" returnType="void" visibility="public"/>
+        <Method name="agregarPedido" returnType="void" visibility="public"/>
+        <Method name="listarPedidos" returnType="List&lt;Pedidos&gt;" visibility="public"/>
+        <Method name="cobrarMesa" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MeserosData" package="" visibility="public" xPosition="456.0" yPosition="430.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="registrarMesero" returnType="void" visibility="public"/>
+        <Method name="cargarPedido" returnType="void" visibility="public"/>
+        <Method name="listarPedidosCobrados" returnType="void" visibility="public"/>
+        <Method name="anularPedido" returnType="void" visibility="public"/>
+        <Method name="eliminarMesero" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ReservasData" package="" visibility="public" xPosition="1226.0" yPosition="314.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="modificarReserva" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PedidosData" package="" visibility="public" xPosition="400.0" yPosition="142.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+        <Field name="mdata" type="MesasData" visibility="private"/>
+        <Field name="meseData" type="MeserosData" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="agregarProducto" returnType="void" visibility="public"/>
+        <Method name="quitarProducto" returnType="void" visibility="public"/>
+        <Method name="calcularSubtotal" returnType="void" visibility="public"/>
+        <Method name="estadoDePedido" returnType="void" visibility="public"/>
+        <Method name="obtenerMontoTotal" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DetallePedidoData" package="" visibility="public" xPosition="697.0" yPosition="550.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularSubtotal" returnType="void" visibility="public"/>
+        <Method name="calcularTotal" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RestaurantData" package="" visibility="public" xPosition="681.0" yPosition="5.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+        <Field name="listadoMesas" type="List&lt;Mesas&gt;" visibility="private"/>
+        <Field name="listadoProductos" type="List&lt;Productos&gt;" visibility="private"/>
+        <Field name="listadoMeseros" type="List&lt;Meseros&gt;" visibility="private"/>
+        <Field name="registroDeIngreso" type="List" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="agregarMesa" returnType="void" visibility="public"/>
+        <Method name="agregarProducto" returnType="void" visibility="public"/>
+        <Method name="registrarMesero" returnType="void" visibility="public"/>
+        <Method name="listarIngresosFecha" returnType="void" visibility="public"/>
+        <Method name="listarPedidosMeseroFecha" returnType="void" visibility="public"/>
+        <Method name="listarPedidosMesaFechaHora" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ProductosData" package="" visibility="public" xPosition="940.0" yPosition="445.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="listarProductos" returnType="List&lt;Productos&gt;" visibility="public"/>
+        <Method name="modificarProducto" returnType="void" visibility="public"/>
+        <Method name="agregarStockProducto" returnType="void" visibility="public"/>
+        <Method name="eliminarStockProducto" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Conexion" package="" visibility="public" xPosition="1226.0" yPosition="5.0">
+      <Fields>
+        <Field name="URL" type="String" visibility="private" isFinal="true"/>
+        <Field name="DB" type="String" visibility="private"/>
+        <Field name="USUARIO" type="String" visibility="private"/>
+        <Field name="PASSWORD" type="String" visibility="private"/>
+        <Field name="connection" type="Connection" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getConexion" returnType="Connection" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="agrega" source="MesasData" target="PedidosData" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <UseRelation name="" source="MesasData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tiene" source="MesasData" target="MeserosData" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="MeserosData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="PedidosData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tiene" source="MesasData" target="PedidosData" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="RestaurantData" target="Conexion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tiene" source="PedidosData" target="ProductosData" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="ProductosData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="ReservasData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="DetallePedidoData" target="RestaurantData" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
